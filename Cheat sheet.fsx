@@ -78,3 +78,124 @@ let none: int option = None
 type Result<'a, 'error> =
     | Ok of 'a
     | Error of 'error
+
+
+// II) Fonctions
+
+// II.0) Mutation
+
+let mutable v = 4
+v <- 5
+
+let mutable private v' = 8
+
+// II.1) Usages simples
+// string -> string
+let shout message = message + "!!1"
+let shout' = fun message -> message + "!!1"
+
+// int -> int -> int
+let add x y = x + y
+let addAlias = add
+let (+++) x y = x + y // ou let (+++) = add
+let douze = 10 +++ 2
+
+let bonjour = shout "Bonjour"
+let bonjour' = "Bonjour" |> shout
+
+let de2a6 =
+    [1..10] // [1;2;3;4;5;6;7;8;9;10]
+    |> List.filter (fun i -> i <= 5) // [1;2;3;4;5]
+    |> List.map ((+) 1) // [2;3;4;5;6]
+    
+// int -> int
+let add1 x = x + 1
+
+// int -> int
+let mult3 x = x * 3
+
+let add1mult3 x =
+    x |> add1 |> mult3
+
+// int -> int
+let add1mult3' = add1 >> mult3
+// ('a -> 'b) >> ('b -> 'c) = ('a -> 'c)
+
+// II.2) Modules et namespace
+
+(*
+namespace MyNamespace
+
+type MyType = string * string
+
+module Toto =
+    type MyType2 = int * int
+    
+    let myFun () = "toto"
+*)
+
+(* ou
+module MyNamespace.Toto
+
+type MyType = int * int
+
+let myFun () = "toto"
+*)
+
+
+
+// II.3) Conditionnelles
+
+let salutations prenom =
+    if prenom <> "Christophe" then
+        sprintf "Bonjour %s" prenom
+    else
+        "Oh vous etes grand ! Vous mesurez combien ? Vous faites du basket ?"
+
+
+// if-then-else = C# ? :
+let booleenStringIfThenElse =
+    if b then "Vrai" else "Faux"
+
+let booleenToString b =
+    match b with
+    | Faux -> "C'est faux"
+    | Vrai -> "C'est pas faux"
+    
+let booleenToString' =
+    function
+    | Faux -> "C'est faux"
+    | Vrai -> "C'est pas faux"
+    
+let fizzbuzz i =
+    match i % 3, i % 5 with
+    | 0, 0 -> "FizzBuzz"
+    | 0, _ -> "Fizz"
+    | _, 0 -> "Buzz"
+    | _ -> string i
+
+
+let shapeToString =
+    function
+    | Point -> "Point"
+    | Circle rayon -> sprintf "Cercle de rayon %i" rayon
+    | Square 3 -> "Superbe carré de 3"
+    | Square x when x > 10 -> sprintf "Très gros carré de %i" x
+    | Square _ -> "Carré"
+    | Rectangle (3, 14) -> "Rectangle pi !"
+    | Rectangle (3, y) -> sprintf "Joli rectangle de 3×%i" y
+    | Rectangle (x,y) -> sprintf "Rectangle de %i×%i" x y
+    
+// II.4) Partialisation
+
+let increment = add 1
+
+let add' = fun x y -> x + y
+let add'' =
+    fun x ->
+        fun y -> x + y
+        
+let treize = add 3 10
+let treize' = 10 |> add 3
+
+
