@@ -1,30 +1,23 @@
-﻿open System.Threading.Tasks
-open Saturn
-open FSharp.Control.Tasks.V2
+﻿open Saturn
 
-open FsAmap.Web.Helpers
+open FsAmap.Web.Routes
+open FsAmap.Web
 
 let port = 8085us
 
-let getToto () =
-    task {
-        do! Task.Delay 300
-        return {| toto = "toto" |} // {|  |} est un record anonyme. « Équivalent » C# : new { Toto = "toto" } 
+let réservationsRouter =
+    router {
+        forward "/panierDuJour" RéservationsPanierDuJourRoute.route
+        forward "/panierPersonnalise" RéservationsPanierPersonnaliséRoute.route
     }
     
-type WaitDto = { wait: int }
-
-let wait dto =
-    task {
-        do! Task.Delay dto.wait
-    }
-
 let mainRouter =
     router {
-        get "/" ( getToto |> toJson)
-        post "/wait" (wait |> withJsonBody)
+        forward "/produits" ProduitsRoute.route
+        forward "/panierDuJour" PanierDuJourRoute.route
+        forward "/reservations" réservationsRouter
     }
-
+    
 let app =
     application {
         use_router mainRouter
