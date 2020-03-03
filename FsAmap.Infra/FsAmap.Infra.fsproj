@@ -5,7 +5,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="Library.fs" />
+        <Compile Include="InMemory\Produits.fs" />
+        <Compile Include="InMemory\InMemoryPanierDuJour.fs" />
+        <Compile Include="InMemory\InMemoryProduits.fs" />
+        <Compile Include="InMemory\InMemoryReservationPanierDuJour.fs" />
+        <Compile Include="InMemory\InMemoryReservationPanierPersonnalise.fs" />
     </ItemGroup>
 
     <ItemGroup>
