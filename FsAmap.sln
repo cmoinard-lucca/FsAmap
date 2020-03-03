@@ -4,6 +4,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FsAmap.Domain", "FsAmap.Dom
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FsAmap.Infra", "FsAmap.Infra\FsAmap.Infra.fsproj", "{06F8061C-2DC3-462B-B550-69134544E1CE}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FsAmap.Web", "FsAmap.Web\FsAmap.Web.fsproj", "{C0CBC86B-6CE7-4887-9236-34C0D70AE902}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{06F8061C-2DC3-462B-B550-69134544E1CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06F8061C-2DC3-462B-B550-69134544E1CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06F8061C-2DC3-462B-B550-69134544E1CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0CBC86B-6CE7-4887-9236-34C0D70AE902}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0CBC86B-6CE7-4887-9236-34C0D70AE902}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0CBC86B-6CE7-4887-9236-34C0D70AE902}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0CBC86B-6CE7-4887-9236-34C0D70AE902}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
